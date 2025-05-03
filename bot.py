@@ -4,9 +4,15 @@ import random
 import discord
 from dotenv import load_dotenv
 
+from discord.ext import commands
+
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user.name} has connected to Discord')
 
 # TypeError, found fix here https://shorturl.at/ALSsg, upon further inspection issue was old tutorial, fix found here: https://www.reddit.com/r/Discord_Bots/comments/k3l0b1/discordpy_cant_get_guild_members/
 intents = discord.Intents.default()
@@ -56,5 +62,15 @@ async def on_message(message):
     if message.content == '99!':
         response = random.choice(brooklyn_99_quotes)
         await message.channel.send(response)
+    elif message.content == 'raise-exception':
+        raise discord.DiscordException
+    
+@client.event
+async def on_error(event, *args, **kwargs):
+    with open('err.log', 'a') as f:
+        if event == 'on_message':
+            f.write(f'Unhandled message: {args[0]}\n')
+        else:
+            raise
 
 client.run(TOKEN)

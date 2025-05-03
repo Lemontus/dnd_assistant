@@ -10,46 +10,15 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord')
 
-# TypeError, found fix here https://shorturl.at/ALSsg, upon further inspection issue was old tutorial, fix found here: https://www.reddit.com/r/Discord_Bots/comments/k3l0b1/discordpy_cant_get_guild_members/
-intents = discord.Intents.default()
-intents.message_content = True
-intents.presences = True
-intents.members = True
-client = discord.Client(intents=intents)
 
-@client.event
-async def on_ready():
-    guild = discord.utils.get(client.guilds, name=GUILD)
-# loops through client.guilds to find the guild(server) provided in .env
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
-# loops through the guild.members, prints out the members inside the guild - Need to fix, only shows itself
-    # members = '\n - '.join([member.name for member in guild.members])
-    # print(f'Guild Members:\n - {members}')
-
-@client.event
-async def on_ready():
-    print(f'{client.user.name} has connected to Discord!')
-
-# Creates then sends a message to every user that joins the discord guild/server
-@client.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f'Hi {member.name}, welcome to my Discord server!'
-    )
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    
+@bot.command(name='99')
+async def nine_nine(ctx):
     brooklyn_99_quotes = [
         'I\'m the human form of the 💯 emoji.',
         'Bingpot!',
@@ -59,18 +28,65 @@ async def on_message(message):
         ),
     ]
 
-    if message.content == '99!':
-        response = random.choice(brooklyn_99_quotes)
-        await message.channel.send(response)
-    elif message.content == 'raise-exception':
-        raise discord.DiscordException
-    
-@client.event
-async def on_error(event, *args, **kwargs):
-    with open('err.log', 'a') as f:
-        if event == 'on_message':
-            f.write(f'Unhandled message: {args[0]}\n')
-        else:
-            raise
+    response = random.choice(brooklyn_99_quotes)
+    await ctx.send(response)
 
-client.run(TOKEN)
+bot.run(TOKEN)
+
+# TypeError, found fix here https://shorturl.at/ALSsg, better way to write it here https://www.reddit.com/r/discordbots/comments/11svqp6/bot_doesnt_recognize_or_respond_to_prefix/
+
+# client = discord.Client(intents=discord.Intents.all())
+
+# @client.event
+# async def on_ready():
+#     guild = discord.utils.get(client.guilds, name=GUILD)
+# # loops through client.guilds to find the guild(server) provided in .env
+#     print(
+#         f'{client.user} is connected to the following guild:\n'
+#         f'{guild.name}(id: {guild.id})'
+    # )
+# loops through the guild.members, prints out the members inside the guild - Need to fix, only shows itself
+    # members = '\n - '.join([member.name for member in guild.members])
+    # print(f'Guild Members:\n - {members}')
+
+# @client.event
+# async def on_ready():
+#     print(f'{client.user.name} has connected to Discord!')
+
+# Creates then sends a message to every user that joins the discord guild/server
+# @client.event
+# async def on_member_join(member):
+#     await member.create_dm()
+#     await member.dm_channel.send(
+#         f'Hi {member.name}, welcome to my Discord server!'
+#     )
+
+# @client.event
+# async def on_message(message):
+#     if message.author == client.user:
+#         return
+    
+#     brooklyn_99_quotes = [
+#         'I\'m the human form of the 💯 emoji.',
+#         'Bingpot!',
+#         (
+#             'Cool. cool cool cool cool cool cool cool,'
+#             'no doubt no doubt no doubt no doubt.'
+#         ),
+#     ]
+
+#     if message.content == '99!':
+#         response = random.choice(brooklyn_99_quotes)
+#         await message.channel.send(response)
+#     elif message.content == 'raise-exception':
+#         raise discord.DiscordException
+    
+# @client.event
+# async def on_error(event, *args, **kwargs):
+#     with open('err.log', 'a') as f:
+#         if event == 'on_message':
+#             f.write(f'Unhandled message: {args[0]}\n')
+#         else:
+#             raise
+
+# client.run(TOKEN)

@@ -43,6 +43,30 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(', '.join(dice))
 
+@bot.command(name="gather", help="Test command")
+async def test(ctx):
+    dice = random.choice(range(1, 101))
+
+    if dice <= 8:
+        location = "Small Life Leaf Patch"
+    elif dice > 8 and dice <= 32:
+        location = "Nothing"
+    elif dice > 32 and dice <= 37:
+        location = "Small Life Leaf Patch"
+    elif dice > 37 and dice <= 63:
+        location = "Small Healing Grass Patch"
+    elif dice > 63 and dice <= 67:
+        location = "Medium Life Leaf Patch"
+    elif dice > 67 and dice <= 72:
+        location = "Small Red Herb Patch"
+    elif dice > 72 and dice <= 95:
+        location = "Small Healing Grass Patch"
+    elif dice > 95 and dice <= 100:
+        location = "Small Life Leaf Patch"
+    print(location)
+
+    await ctx.send(f"You rolled {dice}, You found {location}!")
+
 @bot.command(name='create-channel')
 @commands.has_role('admin')
 async def create_channel(ctx, channel_name='new channel'):

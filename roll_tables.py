@@ -6,7 +6,7 @@ def forest_hunt():
     roll = random.choice(range(1, 11))
     monster = ["Arzuros", "Bulldrome", "Lagombi", "Buldrome", "Buldrome", "Buldrome", "Lagombi", "Lagombi", "Zinogre", "Arzuros"]
     i = roll - 1
-    return monster[x]
+    return monster[i]
 
 
 
@@ -47,8 +47,13 @@ def plains_herb(dice, bonus):
         return "You failed to find anything!"
     else:
         return f"You found {patch}! and gathered {gathered} of {item}!"
+    
 # Roll function for the Great Forest region
 def forest_herb(dice, bonus):
+
+    combat = False
+    hunt = False
+
     if dice <= 5:
         patch = sgmpatch.name #Small Green Moss
         gathered = sgmpatch.gather_result(bonus)
@@ -121,9 +126,9 @@ def forest_herb(dice, bonus):
         gathered = sllpatch.gather_result(bonus)
         item = sllpatch.item
 
-    if combat:
+    if combat == True:
         return f"You have stumbled upon a {enemy} with {enemy_num} enemies"
-    if hunt:
+    elif hunt == True:
         return f"You were unlucky enough to encounter {monster}"
     else:
         return f"You found {patch}! and gathered {gathered} of {item}!"

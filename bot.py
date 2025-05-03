@@ -17,7 +17,7 @@ async def on_ready():
     print(f'{bot.user.name} has connected to Discord')
 
 
-@bot.command(name='99')
+@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
 async def nine_nine(ctx):
     brooklyn_99_quotes = [
         'I\'m the human form of the 💯 emoji.',
@@ -30,6 +30,14 @@ async def nine_nine(ctx):
 
     response = random.choice(brooklyn_99_quotes)
     await ctx.send(response)
+
+@bot.command(name='roll_dice', help='rolls dice')
+async def roll(ctx, number_of_dice: int, number_of_sides: int):
+    dice = [
+        str(random.choice(range(1, number_of_sides + 1)))
+        for _ in range(number_of_dice)
+    ]
+    await ctx.send(', '.join(dice))
 
 bot.run(TOKEN)
 
@@ -59,7 +67,7 @@ bot.run(TOKEN)
 #     await member.create_dm()
 #     await member.dm_channel.send(
 #         f'Hi {member.name}, welcome to my Discord server!'
-#     )
+#     )remember-to-put-discord-token-here
 
 # @client.event
 # async def on_message(message):

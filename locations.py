@@ -21,7 +21,14 @@ class Location:
         else:
             return num_gathered
     
-sllpatch = Location("Small Life Leaf Patch", "Life Leaf", 2, 8)
 shgpatch = Location("Small Healing Grass Patch", "Healing Grass", 4, 6)
+mhgpatch = Location("Medium Healing Grass Patch", "Healing Grass", 10, 6)
+lhgpatch = Location("Large Healing Grass Patch", "Healing Grass", 20, 6)
+sllpatch = Location("Small Life Leaf Patch", "Life Leaf", 2, 8)
 mllpatch = Location("Medium Life Leaf Patch", "Life Leaf", 4, 8)
 srhpatch = Location("Small Red Herb Patch", "Red Herb", 2, 10)
+mrhpatch = Location("Medium Red Herb Patch", "Red Herb", 4, 10)
+sgmpatch = Location("Small Green Moss Patch", "Green Moss", 2, 10)
+sbhpatch = Location("Small Blue Herb Patch", "Blue Herb", 2, 12)
+sgmrpatch = Location("Small Green Mushroom Patch", "Green Mushroom", 2, 12)
+

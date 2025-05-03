@@ -52,6 +52,8 @@ async def herbs(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
         patch = plains(dice, bonus)
+    elif location == "Forest" or location == "forest":
+        patch = forest(dice, bonus)
     else:
         await ctx.send("That's not a location")
         return

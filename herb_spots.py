@@ -38,3 +38,6 @@ def plains(dice, bonus):
         return "You failed to find anything!"
     else:
         return f"You found {patch}! and gathered {gathered} of {item}!"
+    
+def forest(dice, bonus):
+    

@@ -48,7 +48,7 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     await ctx.send(', '.join(dice))
 
 @bot.command(name="gather", help="Test command")
-async def herbs(ctx, location, bonus):
+async def herbs(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
         patch = plains(dice, bonus)
@@ -58,22 +58,22 @@ async def herbs(ctx, location, bonus):
 
     await ctx.send(f"You rolled {dice}")
     # time.sleep(1)
-    await ctx.send(f"You found {patch}!")
+    await ctx.send(patch)
     # time.sleep(1)
 
-@bot.command(name='create-channel')
-@commands.has_role('admin')
-async def create_channel(ctx, channel_name='new channel'):
-    guild = ctx.guild
-    existing_channel =discord.utils.get(guild.channels, name=channel_name)
-    if not existing_channel:
-        print(f'Creating a new channel: {channel_name}')
-        await guild.create_text_channel(channel_name)
+# @bot.command(name='create-channel')
+# @commands.has_role('admin')
+# async def create_channel(ctx, channel_name='new channel'):
+#     guild = ctx.guild
+#     existing_channel =discord.utils.get(guild.channels, name=channel_name)
+#     if not existing_channel:
+#         print(f'Creating a new channel: {channel_name}')
+#         await guild.create_text_channel(channel_name)
 
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.errors.CheckFailure):
-        await ctx.send('You do not have the correct role for this')
+# @bot.event
+# async def on_command_error(ctx, error):
+#     if isinstance(error, commands.errors.CheckFailure):
+#         await ctx.send('You do not have the correct role for this')
 
 
 bot.run(TOKEN)

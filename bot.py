@@ -1,10 +1,14 @@
 import os
 import random
 
+import time
 import discord
+import herb_spots
+from herb_spots import *
 from dotenv import load_dotenv
 
 from discord.ext import commands
+
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -44,28 +48,18 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     await ctx.send(', '.join(dice))
 
 @bot.command(name="gather", help="Test command")
-async def test(ctx):
+async def herbs(ctx, location, bonus):
     dice = random.choice(range(1, 101))
+    if location == "Plains" or location == "plains":
+        patch = plains(dice, bonus)
+    else:
+        await ctx.send("That's not a location")
+        return
 
-    if dice <= 8:
-        location = "Small Life Leaf Patch"
-    elif dice > 8 and dice <= 32:
-        location = "Nothing"
-    elif dice > 32 and dice <= 37:
-        location = "Small Life Leaf Patch"
-    elif dice > 37 and dice <= 63:
-        location = "Small Healing Grass Patch"
-    elif dice > 63 and dice <= 67:
-        location = "Medium Life Leaf Patch"
-    elif dice > 67 and dice <= 72:
-        location = "Small Red Herb Patch"
-    elif dice > 72 and dice <= 95:
-        location = "Small Healing Grass Patch"
-    elif dice > 95 and dice <= 100:
-        location = "Small Life Leaf Patch"
-    print(location)
-
-    await ctx.send(f"You rolled {dice}, You found {location}!")
+    await ctx.send(f"You rolled {dice}")
+    # time.sleep(1)
+    await ctx.send(f"You found {patch}!")
+    # time.sleep(1)
 
 @bot.command(name='create-channel')
 @commands.has_role('admin')

@@ -20,7 +20,8 @@ class Location:
             return self.max_items
         else:
             return num_gathered
-    
+
+# Herbalism Locations
 shgpatch = Location("Small Healing Grass Patch", "Healing Grass", 4, 6)
 mhgpatch = Location("Medium Healing Grass Patch", "Healing Grass", 10, 6)
 lhgpatch = Location("Large Healing Grass Patch", "Healing Grass", 20, 6)
@@ -32,3 +33,20 @@ sgmpatch = Location("Small Green Moss Patch", "Green Moss", 2, 10)
 sbhpatch = Location("Small Blue Herb Patch", "Blue Herb", 2, 12)
 sgmrpatch = Location("Small Green Mushroom Patch", "Green Mushroom", 2, 12)
 
+# Mining Locations
+
+class Combatant:
+    def __init__(self, name, dice, num_change):
+        self.name = name
+        self.dice = dice
+        self.num_change = num_change
+
+    def enemy_result(self):
+        roll = random.choice(range(1, self.dice + 1))
+        enemy_num = roll + self.num_change
+        return enemy_num
+    
+
+gsparty = Combatant("Goblin Hunting Party", 4, 2)
+
+        

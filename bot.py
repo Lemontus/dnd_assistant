@@ -3,8 +3,8 @@ import random
 
 import time
 import discord
-import herb_spots
-from herb_spots import *
+import roll_tables
+from roll_tables import *
 from dotenv import load_dotenv
 
 from discord.ext import commands
@@ -51,9 +51,9 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
 async def herbs(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
-        patch = plains(dice, bonus)
+        patch = plains_herb(dice, bonus)
     elif location == "Forest" or location == "forest":
-        patch = forest(dice, bonus)
+        patch = forest_herb(dice, bonus)
     else:
         await ctx.send("That's not a location")
         return

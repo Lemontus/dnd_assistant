@@ -47,7 +47,7 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(', '.join(dice))
 
-@bot.command(name="gather", help="Test command")
+@bot.command(name="gather", help="The gathering command accepts !gather + <location> + <bonus>")
 async def herbs(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
@@ -59,9 +59,21 @@ async def herbs(ctx, location, bonus=0):
         return
 
     await ctx.send(f"You rolled {dice}")
-    # time.sleep(1)
     await ctx.send(patch)
-    # time.sleep(1)
+
+@bot.command(name="mine", help="The Mining command accepts !mine + <location> + <bonus>")
+async def metals(ctx, location, bonus=0):
+    dice = random.choice(range(1, 101))
+    if location == "Plains" or location == "plains":
+        vein = plains_metal(dice, bonus)
+    # elif location == "Forest" or location == "forest":
+    #     vein = forest_metal(dice, bonus)
+    else:
+        await ctx.send("That's not a location")
+        return
+    await ctx.send(f"You rolled {dice}")
+    await ctx.send(vein)
+
 
 # @bot.command(name='create-channel')
 # @commands.has_role('admin')

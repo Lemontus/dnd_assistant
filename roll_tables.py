@@ -2,6 +2,7 @@ import class_lib
 import random
 from class_lib import *
 
+# Roll table for Great Forest monster hunt
 def forest_hunt():
     roll = random.choice(range(1, 11))
     monster = ["Arzuros", "Bulldrome", "Lagombi", "Buldrome", "Buldrome", "Buldrome", "Lagombi", "Lagombi", "Zinogre", "Arzuros"]
@@ -10,7 +11,7 @@ def forest_hunt():
 
 
 
-# Roll functions for the plains region
+# Roll function for herb gathering in the plains region
 def plains_herb(dice, bonus):
     if dice <= 8:
         patch = sllpatch.name #Small Life Leaf
@@ -48,7 +49,7 @@ def plains_herb(dice, bonus):
     else:
         return f"You found {patch}! and gathered {gathered} of {item}!"
     
-# Roll function for the Great Forest region
+# Roll function for herb gathering in the Great Forest region
 def forest_herb(dice, bonus):
 
     combat = False
@@ -132,3 +133,46 @@ def forest_herb(dice, bonus):
         return f"You were unlucky enough to encounter {monster}"
     else:
         return f"You found {patch}! and gathered {gathered} of {item}!"
+    
+def plains_metal(dice, bonus):
+    if dice < 5:
+        vein = siov.name # Small Iron Ore
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+    elif dice > 5 and dice <= 11:
+        vein = "Nothing"
+    elif dice > 11 and dice <= 17:
+        vein = mrock.name # Medium Rock
+        gathered = mrock.rock_result(bonus)
+        item = mrock.item
+    elif dice > 17 and dice <= 43:
+        vein = sgmov.name # Small Goblin Metal Ore
+        gathered = sgmov.gather_result(bonus)
+        item = sgmov.item
+    elif dice > 43 and dice <= 47:
+        vein = siov.name # Small Iron Ore
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+    elif dice > 47 and dice <= 56:
+        vein = sciov.name # Small Crude Iron Ore
+        gathered = sciov.gather_result(bonus)
+        item = sciov.item
+    elif dice > 56 and dice <= 61:
+        vein = lrock.name # Large Rock
+        gathered = lrock.rock_result(bonus)
+        item = lrock.item
+    elif dice > 61 and dice <= 87:
+        vein = sgmov.name # Small Goblin Metal Ore
+        gathered = sgmov.gather_result(bonus)
+        item = sgmov.item
+    elif dice > 87 and dice <= 92:
+        vein = miov.name # Medium Iron Ore
+        gathered = miov.gather_result(bonus)
+        item = miov.item
+    elif dice > 92 and dice <= 100:
+        vein = "Nothing"
+
+    if vein == "Nothing":
+        return "You failed to find anything!"
+    else:
+        return f"You found {vein}! and gathered {gathered} of {item}!"

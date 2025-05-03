@@ -16,6 +16,10 @@ bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord')
 
+@bot.hybrid_command(description="Bot's latency")
+async def ping(ctx):
+    await ctx.respond(f'pong! Latency is {bot.latency}')
+
 
 @bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
 async def nine_nine(ctx):
@@ -51,7 +55,7 @@ async def create_channel(ctx, channel_name='new channel'):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CheckFailure):
-        await ctx.send('You do not have the correct role for this command.')
+        await ctx.send('You do not have the correct role for this')
 
 
 bot.run(TOKEN)

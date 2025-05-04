@@ -36,8 +36,10 @@ def brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
     
     ingr_id_list.sort()
     potion_key = "".join(ingr_id_list)
+    print(potion_key)
 
     if potion_key in potion_list:
-        return(potion_list[potion_key]).brew_potion(bonus)
+        result = (potion_list[potion_key]).brew_potion(bonus)
+        return result
     else:
         return "You have brewed an unknown potion"

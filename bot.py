@@ -10,7 +10,8 @@ from roll_tables import *
 from func import *
 from dotenv import load_dotenv
 
-from discord.ext import commands
+from discord import app_commands
+from discord.ext import commands 
 
 
 load_dotenv()
@@ -18,6 +19,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+client = discord.Client(intents=discord.Intents.all())
 
 @bot.event
 async def on_ready():
@@ -50,8 +52,8 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(', '.join(dice))
 
-@bot.command(name="gather", help="The gathering command accepts !gather + <location> + <bonus>")
-async def herbs(ctx, location, bonus=0):
+@bot.hybrid_command(name="gather", help="The gathering command accepts !gather + <location> + <bonus>")
+async def herbs(ctx, location: str, bonus: int):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
         patch = plains_herb(dice, bonus)
@@ -64,7 +66,7 @@ async def herbs(ctx, location, bonus=0):
     await ctx.send(f"You rolled {dice}")
     await ctx.send(patch)
 
-@bot.command(name="mine", help="The Mining command accepts !mine + <location> + <bonus>")
+@bot.hybrid_command(name="mine", help="The Mining command accepts !mine + <location> + <bonus>")
 async def metals(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
@@ -77,14 +79,16 @@ async def metals(ctx, location, bonus=0):
     await ctx.send(f"You rolled {dice}")
     await ctx.send(vein)
 
-@bot.command(name="brew", help="The Brew command accepts !brew + ")
-async def potions(ctx, ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
-    result = brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus)
+@bot.hybrid_command(name="brew", help="The Brew command accepts !brew + ")
+async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus=0):
+    result = brew_func(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus)
 
-    await ctx.send(result)
+    await ctx.send(f"{result}")
 
-    
-
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print("Ready!")
 
 # @bot.command(name='create-channel')
 # @commands.has_role('admin')
@@ -105,7 +109,7 @@ bot.run(TOKEN)
 
 # TypeError, found fix here https://shorturl.at/ALSsg, better way to write it here https://www.reddit.com/r/discordbots/comments/11svqp6/bot_doesnt_recognize_or_respond_to_prefix/
 
-# client = discord.Client(intents=discord.Intents.all())
+client = discord.Client(intents=discord.Intents.all())
 
 # @client.event
 # async def on_ready():
@@ -159,4 +163,4 @@ bot.run(TOKEN)
 #         else:
 #             raise
 
-# client.run(TOKEN)
+client.run(TOKEN)

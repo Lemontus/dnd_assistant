@@ -54,44 +54,56 @@ class Combatant:
         return enemy_num
 
 class Item:
-    def __init__(self, name, description, difficulty):
+    def __init__(self, name, description, difficulty, id=0):
         self.name = name
         self.description = description
         self.difficulty = difficulty
+        self.id = id
 
 class Potion(Item):
-    def __init__(self, name, description, difficulty, ingr1, ingr2, ingr3, ingr4, ingr5):
+    def __init__(self, name, description, difficulty, ingr1, ingr2, ingr3, ingr4, ingr5, key):
         super().__init__(name, description, difficulty)
         self.ingr1 = ingr1
         self.ingr2 = ingr2
         self.ingr3 = ingr3
         self.ingr4 = ingr4
         self.ingr5 = ingr5
+        self.key = key
+
+    def brew_potion(self, bonus):
+        roll = random.choice(range(1, 21))
+        if roll >= self.difficulty:
+            return f"You succesfully brewed a {self.description}"
+        else:
+            return "You failed to brew anything"
 
 # Herbs
-hgrass = Item("Healing Grass", "", 6)
-lleaf = Item("Life Leaf", "", 8)
-rherb = Item("Red Herb", "", 10)
-bherb = Item("Blue Herb", "", 12)
-blherb = Item("Black Herb", "", 20)
-gmoss = Item("Green Moss", "", 10)
-ymoss = Item("Yellow Moss", "", 12)
-pmoss = Item("Purple Moss", "", 15)
-vmoss = Item("Violet Moss", "", 20)
-gshroom = Item("Green Mushroom", "", 12)
-rshroom = Item("Red Mushroom", "", 14)
-bshroom = Item("Blue Mushroom", "", 16)
-pshroom = Item("Purple Mushroom", "", 16)
+hgrass = Item("Healing Grass", "", 6, 0)
+lleaf = Item("Life Leaf", "", 8, 1)
+rherb = Item("Red Herb", "", 10, 2)
+bherb = Item("Blue Herb", "", 12, 3)
+blherb = Item("Black Herb", "", 20, 4)
+gmoss = Item("Green Moss", "", 10, 5)
+ymoss = Item("Yellow Moss", "", 12, 6)
+pmoss = Item("Purple Moss", "", 15, 7)
+vmoss = Item("Violet Moss", "", 20, 8)
+gshroom = Item("Green Mushroom", "", 12, 9)
+rshroom = Item("Red Mushroom", "", 14, 10)
+bshroom = Item("Blue Mushroom", "", 16, 11)
+pshroom = Item("Purple Mushroom", "", 16, 12)
 
 # Metal
-stone = Item("Stone", "", 1)
-gmore = Item("Goblin Metal Ore", "", 6)
-ciore = Item("Crude Iron Ore", "", 6)
-iore = Item("Iron Ore", "", 8)
-coal = Item("Coal", "", 12)
-diore = Item("Dark Iron Ore", "", 14)
-biore = Item("Blue Iron Ore", "", 14)
-nore = Item("Nathrite Ore", "", 18)
+stone = Item("Stone", "", 1, 0)
+gmore = Item("Goblin Metal Ore", "", 6, 1)
+ciore = Item("Crude Iron Ore", "", 6, 2)
+iore = Item("Iron Ore", "", 8, 3)
+coal = Item("Coal", "", 12, 4)
+diore = Item("Dark Iron Ore", "", 14, 5)
+biore = Item("Blue Iron Ore", "", 14, 6)
+nore = Item("Nathrite Ore", "", 18, 7)
+
+# Potions
+hwater = Potion("Healing Water", "green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}")
 
 # Herbalism Locations
 shgpatch = Vein("Small Healing Grass Patch", hgrass.name, 4, hgrass.difficulty)

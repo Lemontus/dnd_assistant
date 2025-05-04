@@ -14,8 +14,32 @@ herb_list = {
     rshroom.name: rshroom.id,
     bshroom.name: bshroom.id,
     pshroom.name: pshroom.id,
+    stone.name: stone.id,
+    gmore.name: gmore.id,
+    ciore.name: ciore.id,
+    iore.name: iore.id,
+    coal.name: coal.id,
+    diore.name: diore.id,
+    biore.name: biore.id,
+    nore.name: nore.id,
+    gbtusk.name: gbtusk.id,
+    lrpowder.name: lrpowder.id,
+    ecpowder.name: ecpowder.id,
 } 
 
 potion_list = {
-    hwater.key: hwater
+    hwater.key: hwater,
+    lhpotion1.key: lhpotion1,
+    lhpotion2.key: lhpotion2,
+    lhpotion3.key: lhpotion3,
+    lhpotion4.key: lhpotion4,
+    hpotion.key: hpotion,
+    phpotion.key: phpotion,
+    ghpotion.key: ghpotion,
+    frpotion.key: frpotion,
+    lantidote.key: lantidote,
+    ppoison.key: ppoison,
+    prpotion.key: prpotion,
+    lspotion.key: lspotion,
+    rcreagent.key: rcreagent,
 }

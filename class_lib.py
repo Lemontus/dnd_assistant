@@ -53,6 +53,7 @@ class Combatant:
         enemy_num = roll + self.num_change
         return enemy_num
 
+# Class for items
 class Item:
     def __init__(self, name, description, difficulty, id=0):
         self.name = name
@@ -60,6 +61,7 @@ class Item:
         self.difficulty = difficulty
         self.id = id
 
+# Class for potions
 class Potion(Item):
     def __init__(self, name, description, difficulty, ingr1, ingr2, ingr3, ingr4, ingr5, key):
         super().__init__(name, description, difficulty)
@@ -75,7 +77,7 @@ class Potion(Item):
         craft_roll = roll + bonus
         print(craft_roll)
         if craft_roll >= self.difficulty:
-            return f"You succesfully brewed a {self.description}"
+            return f"You succesfully brewed {self.description}"
         else:
             return "You failed to brew anything"
 
@@ -95,17 +97,37 @@ bshroom = Item("Blue Mushroom", "", 16, 11)
 pshroom = Item("Purple Mushroom", "", 16, 12)
 
 # Metal
-stone = Item("Stone", "", 1, 0)
-gmore = Item("Goblin Metal Ore", "", 6, 1)
-ciore = Item("Crude Iron Ore", "", 6, 2)
-iore = Item("Iron Ore", "", 8, 3)
-coal = Item("Coal", "", 12, 4)
-diore = Item("Dark Iron Ore", "", 14, 5)
-biore = Item("Blue Iron Ore", "", 14, 6)
-nore = Item("Nathrite Ore", "", 18, 7)
+stone = Item("Stone", "", 1, 13)
+gmore = Item("Goblin Metal Ore", "", 6, 14)
+ciore = Item("Crude Iron Ore", "", 6, 15)
+iore = Item("Iron Ore", "", 8, 16)
+coal = Item("Coal", "", 12, 17)
+diore = Item("Dark Iron Ore", "", 14, 18)
+biore = Item("Blue Iron Ore", "", 14, 19)
+nore = Item("Nathrite Ore", "", 18, 20)
+
+# Others
+gbtusk = Item("Ground Boar Tusk", "", 8, 21)
+lrpowder = Item("Light Red Powder", "", 14, 22)
+
+# Special
+ecpowder = Item("???", "", 20, 99)
 
 # Potions
-hwater = Potion("Healing Water", "green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{lleaf.id}")
+hwater = Potion("Healing Water", "a bottle of green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}")
+lhpotion1 = Potion("Lesser Healing Potion", "a bottle of slightly red liquid", 10, lleaf.name, lleaf.name, lleaf.name, lleaf.name, lleaf.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{lleaf.id}{lleaf.id}")
+lhpotion2 = Potion("Lesser Healing Potion", "a bottle of slightly red liquid", 10, lleaf.name, lleaf.name, lleaf.name, lleaf.name, rherb.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{lleaf.id}{rherb.id}")
+lhpotion3 = Potion("Lesser Healing Potion", "a bottle of slightly red liquid", 10, lleaf.name, lleaf.name, lleaf.name, lleaf.name, gmoss.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{lleaf.id}{gmoss.id}")
+lhpotion4 = Potion("Lesser Healing Potion", "2 bottles of slightly red liquid", 10, gmoss.name, gmoss.name, gmoss.name, gmoss.name, gmoss.name, f"{gmoss.id}{gmoss.id}{gmoss.id}{gmoss.id}{gmoss.id}")
+hpotion = Potion("Healing Potion", "a bottle of red liquid", 12, lleaf.name, lleaf.name, lleaf.name, rherb.name, rherb.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{rherb.id}{rherb.id}")
+phpotion = Potion("Potent Healing Potion", "a bottle of bright red liquid", 14, lleaf.name, lleaf.name, lleaf.name, rherb.name, rshroom.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{rherb.id}{rshroom.id}")
+ghpotion = Potion("Greater Healing Potion", "a bottle of thick bright red liquid", 16, lleaf.name, lleaf.name, rshroom.name, rshroom.name, ymoss.name, f"{lleaf.id}{lleaf.id}{ymoss.id}{rshroom.id}{rshroom.id}")
+frpotion = Potion("Frost Resistance Potion", "a bottle of bright blue liquid with a minty scent", 16, lleaf.name, bherb.name, bherb.name, bshroom.name, bshroom.name, f"{lleaf.id}{bherb.id}{bherb.id}{bshroom.id}{bshroom.id}")
+lantidote = Potion("Lesser Antidote", "a bottle of light green liquid", 12, lleaf.name, lleaf.name, lleaf.name, lleaf.name, bherb.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{lleaf.id}{bherb.id}")
+ppoison = Potion("Potent Poison", "a bottle of dark purple liquid", 14, bherb.name, bherb.name, rherb.name, rherb.name, rherb.name, f"{rherb.id}{rherb.id}{rherb.id}{bherb.id}{bherb.id}")
+prpotion = Potion("Purple Rejuvenating Potion", "a bottle of thick bright purple liquid", 18, vmoss.name, vmoss.name, pshroom.name, pshroom.name, ecpowder.name, f"{vmoss.id}{vmoss.id}{pshroom.id}{pshroom.id}{ecpowder.id}")
+lspotion = Potion("Long Strider Potion", "a bottle of light yellow liquid", 10, lleaf.name, lleaf.name, lleaf.name, gbtusk.name, gbtusk.name, f"{lleaf.id}{lleaf.id}{lleaf.id}{gbtusk.id}{gbtusk.id}")
+rcreagent = Potion("Rust Cleaning Reagent", "a bottle of gray liquid", 14, rherb.name, rherb.name, rherb.name, lrpowder.name, lrpowder.name, f"{rherb.id}{rherb.id}{rherb.id}{lrpowder.id}{lrpowder.id}")
 
 # Herbalism Locations
 shgpatch = Vein("Small Healing Grass Patch", hgrass.name, 4, hgrass.difficulty)

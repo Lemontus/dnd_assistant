@@ -81,9 +81,11 @@ async def metals(ctx, location, bonus=0):
 
 @bot.hybrid_command(name="brew", help="The Brew command accepts !brew + ")
 async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus=0):
+    print(f"{ingredient1}, {ingredient2}, {ingredient3}, {ingredient4}, {ingredient5}")
     result = brew_func(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus)
 
-    await ctx.send(f"{result}")
+    await ctx.send(f"{result}", ephemeral=True)
+    await ctx.send(f"{ctx.author.mention} is currently brewing potions")
 
 @bot.event
 async def on_ready():

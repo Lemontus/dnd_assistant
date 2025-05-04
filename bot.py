@@ -7,6 +7,7 @@ import roll_tables
 import class_lib
 from class_lib import *
 from roll_tables import *
+from func import *
 from dotenv import load_dotenv
 
 from discord.ext import commands
@@ -77,8 +78,11 @@ async def metals(ctx, location, bonus=0):
     await ctx.send(vein)
 
 @bot.command(name="brew", help="The Brew command accepts !brew + ")
-async def potions(ctx, ingr1, ingr2, ingr3, ingr4, ingr5):
-    pass
+async def potions(ctx, ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
+    result = brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus)
+
+    await ctx.send(result)
+
     
 
 

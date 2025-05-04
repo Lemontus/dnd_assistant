@@ -70,9 +70,11 @@ class Potion(Item):
         self.ingr5 = ingr5
         self.key = key
 
-    def brew_potion(self, bonus):
+    def brew_potion(self, bonus=0):
         roll = random.choice(range(1, 21))
-        if roll >= self.difficulty:
+        craft_roll = roll + bonus
+        print(craft_roll)
+        if craft_roll >= self.difficulty:
             return f"You succesfully brewed a {self.description}"
         else:
             return "You failed to brew anything"
@@ -103,7 +105,7 @@ biore = Item("Blue Iron Ore", "", 14, 6)
 nore = Item("Nathrite Ore", "", 18, 7)
 
 # Potions
-hwater = Potion("Healing Water", "green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}")
+hwater = Potion("Healing Water", "green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{lleaf.id}")
 
 # Herbalism Locations
 shgpatch = Vein("Small Healing Grass Patch", hgrass.name, 4, hgrass.difficulty)

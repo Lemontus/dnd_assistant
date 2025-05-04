@@ -9,7 +9,7 @@ class Location:
         self.difficulty = difficulty
 
 # Material Location        
-class Material(Location):
+class Vein(Location):
     def __init__(self, name, item, max_items, difficulty):
         super().__init__(name, item, max_items, difficulty)
 
@@ -27,7 +27,7 @@ class Material(Location):
         else:
             return num_gathered
 
-# Only for Rocks    
+# Only for Rocks Location
 class Rock(Location):
     def __init__(self, name, item, max_items, difficulty):
         super().__init__(name, item, max_items, difficulty)
@@ -53,30 +53,70 @@ class Combatant:
         enemy_num = roll + self.num_change
         return enemy_num
 
+class Item:
+    def __init__(self, name, description, difficulty):
+        self.name = name
+        self.description = description
+        self.difficulty = difficulty
+
+class Potion(Item):
+    def __init__(self, name, description, difficulty, ingr1, ingr2, ingr3, ingr4, ingr5):
+        super().__init__(name, description, difficulty)
+        self.ingr1 = ingr1
+        self.ingr2 = ingr2
+        self.ingr3 = ingr3
+        self.ingr4 = ingr4
+        self.ingr5 = ingr5
+
+# Herbs
+hgrass = Item("Healing Grass", "", 6)
+lleaf = Item("Life Leaf", "", 8)
+rherb = Item("Red Herb", "", 10)
+bherb = Item("Blue Herb", "", 12)
+blherb = Item("Black Herb", "", 20)
+gmoss = Item("Green Moss", "", 10)
+ymoss = Item("Yellow Moss", "", 12)
+pmoss = Item("Purple Moss", "", 15)
+vmoss = Item("Violet Moss", "", 20)
+gshroom = Item("Green Mushroom", "", 12)
+rshroom = Item("Red Mushroom", "", 14)
+bshroom = Item("Blue Mushroom", "", 16)
+pshroom = Item("Purple Mushroom", "", 16)
+
+# Metal
+stone = Item("Stone", "", 1)
+gmore = Item("Goblin Metal Ore", "", 6)
+ciore = Item("Crude Iron Ore", "", 6)
+iore = Item("Iron Ore", "", 8)
+coal = Item("Coal", "", 12)
+diore = Item("Dark Iron Ore", "", 14)
+biore = Item("Blue Iron Ore", "", 14)
+nore = Item("Nathrite Ore", "", 18)
+
 # Herbalism Locations
-shgpatch = Material("Small Healing Grass Patch", "Healing Grass", 4, 6)
-mhgpatch = Material("Medium Healing Grass Patch", "Healing Grass", 10, 6)
-lhgpatch = Material("Large Healing Grass Patch", "Healing Grass", 20, 6)
-sllpatch = Material("Small Life Leaf Patch", "Life Leaf", 2, 8)
-mllpatch = Material("Medium Life Leaf Patch", "Life Leaf", 4, 8)
-srhpatch = Material("Small Red Herb Patch", "Red Herb", 2, 10)
-mrhpatch = Material("Medium Red Herb Patch", "Red Herb", 4, 10)
-sgmpatch = Material("Small Green Moss Patch", "Green Moss", 2, 10)
-sbhpatch = Material("Small Blue Herb Patch", "Blue Herb", 2, 12)
-sgmrpatch = Material("Small Green Mushroom Patch", "Green Mushroom", 2, 12)
+shgpatch = Vein("Small Healing Grass Patch", hgrass.name, 4, hgrass.difficulty)
+mhgpatch = Vein("Medium Healing Grass Patch", hgrass.name, 10, hgrass.difficulty)
+lhgpatch = Vein("Large Healing Grass Patch", hgrass.name, 20, hgrass.difficulty)
+sllpatch = Vein("Small Life Leaf Patch", lleaf.name, 2, lleaf.difficulty)
+mllpatch = Vein("Medium Life Leaf Patch", lleaf.name, 4, lleaf.difficulty)
+srhpatch = Vein("Small Red Herb Patch", rherb.name, 2, rherb.difficulty)
+mrhpatch = Vein("Medium Red Herb Patch", rherb.name, 4, rherb.difficulty)
+sgmpatch = Vein("Small Green Moss Patch", gmoss.name, 2, gmoss.difficulty)
+sbhpatch = Vein("Small Blue Herb Patch", bherb.name, 2, bherb.difficulty)
+sgmrpatch = Vein("Small Green Mushroom Patch", gshroom.name, 2, gshroom.difficulty)
 
 # Mining Locations
-mrock = Rock("Medium Rock", "Stone", 10, 1)
-lrock = Rock("Large Rock", "Stone", 20, 1)
-sgmov = Material("Small Goblin Metal Ore Vein", "Goblin Metal Ore", 4, 6)
-mgmov = Material("Medium Goblin Metal Ore Vein", "Goblin Metal Ore", 10, 6)
-lgmov = Material("Large Goblin Metal Ore Vein", "Goblin Metal Ore", 20, 6)
-sciov = Material("Small Crude Iron Ore Vein", "Crude Iron Ore", 4, 6)
-siov = Material("Small Iron Ore Vein", "Iron Ore", 4, 8)
-miov = Material("Medium Iron Ore Vein", "Iron Ore", 10, 8)
-snov = Material("Small Nathrite Ore Vein", "Nathrite Ore", 2, 18)
-scv = Material("Small Coal Vein", "Coal", 4, 12)
-sdiov = Material("Small Dark Iron Ore Vein", "Dark Iron", 4, 14)
+mrock = Rock("Medium Rock", stone.name, 10, stone.difficulty)
+lrock = Rock("Large Rock", stone.name, 20, stone.difficulty)
+sgmov = Vein("Small Goblin Metal Ore Vein", gmore.name, 4, gmore.difficulty)
+mgmov = Vein("Medium Goblin Metal Ore Vein", gmore.name, 10, gmore.difficulty)
+lgmov = Vein("Large Goblin Metal Ore Vein", gmore.name, 20, gmore.difficulty)
+sciov = Vein("Small Crude Iron Ore Vein", ciore.name, 4, ciore.difficulty)
+siov = Vein("Small Iron Ore Vein", iore.name, 4, iore.difficulty)
+miov = Vein("Medium Iron Ore Vein", iore.name, 10, iore.difficulty)
+snov = Vein("Small Nathrite Ore Vein", nore.name, 2, nore.difficulty)
+scv = Vein("Small Coal Vein", coal.difficulty, 4, coal.difficulty)
+sdiov = Vein("Small Dark Iron Ore Vein", diore.name, 4, diore.difficulty)
 
 # Monster groups
 gsparty = Combatant("Goblin Hunting Party", 4, 2)

@@ -4,6 +4,8 @@ import random
 import time
 import discord
 import roll_tables
+import class_lib
+from class_lib import *
 from roll_tables import *
 from dotenv import load_dotenv
 
@@ -73,6 +75,11 @@ async def metals(ctx, location, bonus=0):
         return
     await ctx.send(f"You rolled {dice}")
     await ctx.send(vein)
+
+@bot.command(name="brew", help="The Brew command accepts !brew + ")
+async def potions(ctx, ingr1, ingr2, ingr3, ingr4, ingr5):
+    pass
+    
 
 
 # @bot.command(name='create-channel')

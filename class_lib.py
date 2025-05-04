@@ -41,6 +41,18 @@ class Rock(Location):
         else:
             return num_gathered
 
+# Groups of enemies
+class Combatant:
+    def __init__(self, name, dice, num_change):
+        self.name = name
+        self.dice = dice
+        self.num_change = num_change
+
+    def enemy_result(self):
+        roll = random.choice(range(1, self.dice + 1))
+        enemy_num = roll + self.num_change
+        return enemy_num
+
 # Herbalism Locations
 shgpatch = Material("Small Healing Grass Patch", "Healing Grass", 4, 6)
 mhgpatch = Material("Medium Healing Grass Patch", "Healing Grass", 10, 6)
@@ -57,22 +69,17 @@ sgmrpatch = Material("Small Green Mushroom Patch", "Green Mushroom", 2, 12)
 mrock = Rock("Medium Rock", "Stone", 10, 1)
 lrock = Rock("Large Rock", "Stone", 20, 1)
 sgmov = Material("Small Goblin Metal Ore Vein", "Goblin Metal Ore", 4, 6)
+mgmov = Material("Medium Goblin Metal Ore Vein", "Goblin Metal Ore", 10, 6)
+lgmov = Material("Large Goblin Metal Ore Vein", "Goblin Metal Ore", 20, 6)
 sciov = Material("Small Crude Iron Ore Vein", "Crude Iron Ore", 4, 6)
 siov = Material("Small Iron Ore Vein", "Iron Ore", 4, 8)
 miov = Material("Medium Iron Ore Vein", "Iron Ore", 10, 8)
+snov = Material("Small Nathrite Ore Vein", "Nathrite Ore", 2, 18)
+scv = Material("Small Coal Vein", "Coal", 4, 12)
+sdiov = Material("Small Dark Iron Ore Vein", "Dark Iron", 4, 14)
 
-class Combatant:
-    def __init__(self, name, dice, num_change):
-        self.name = name
-        self.dice = dice
-        self.num_change = num_change
-
-    def enemy_result(self):
-        roll = random.choice(range(1, self.dice + 1))
-        enemy_num = roll + self.num_change
-        return enemy_num
-    
-
+# Monster groups
 gsparty = Combatant("Goblin Hunting Party", 4, 2)
+bparty = Combatant("Bandit Party", 4, 0)
 
         

@@ -176,3 +176,88 @@ def plains_metal(dice, bonus):
         return "You failed to find anything!"
     else:
         return f"You found {vein}! and gathered {gathered} of {item}!"
+    
+
+def forest_metal(dice, bonus):
+
+    combat = False
+    hunt = False
+
+    if dice <= 5:
+        vein = siov.name # Small Iron Ore
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+    elif dice > 5 and dice <= 11:
+        vein = sgmov.name # Small Goblin Metal Ore
+        gathered = sgmov.gather_result(bonus)
+        item = sgmov.item
+    elif dice > 11 and dice <= 13:
+        vein = snov.name # Small Nathrite
+        gathered = snov.gather_result(bonus)
+        item = snov.item
+    elif dice > 13 and dice <= 17:
+        hunt = True
+        monster = forest_hunt()
+    elif dice > 17 and dice <= 20:
+        vein = siov.name
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+    elif dice > 20 and dice <= 27:
+        combat = True
+        enemy = gsparty.name # Goblin Scouting Party
+        enemy_num = gsparty.enemy_result()
+    elif dice > 27 and dice <= 32:
+        vein = siov.name
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+    elif dice > 32 and dice <= 37:
+        vein = sciov.name
+        gathered = sciov.gather_result(bonus)
+        item = sciov.item
+    elif dice > 37 and dice <= 41:
+        vein = scv.name
+        gathered = scv.gather_result(bonus)
+        item = scv.item
+    elif dice > 41 and dice <= 46:
+        vein = mgmov.name
+        gathered = mgmov.gather_result(bonus)
+        item = mgmov.item
+    elif dice > 46 and dice <= 57:
+        vein = sgmov.name
+        gathered = sgmov.gather_result(bonus)
+        item = sgmov.item
+    elif dice > 57 and dice <= 63:
+        combat = True
+        enemy = bparty.name # Bandit Party
+        enemy_num = bparty.enemy_result()
+    elif dice > 63 and dice <= 70:
+        vein = miov.name
+        gathered = miov.gather_result(bonus)
+        item = miov.item
+    elif dice > 70 and dice <= 76:
+        vein = sgmov.name
+        gathered = sgmov.gather_result(bonus)
+        item = sgmov.item
+    elif dice > 76 and dice <= 82:
+        vein = sciov.name
+        gathered = sciov.gather_result(bonus)
+        item = sciov.item
+    elif dice > 82 and dice <= 88:
+        vein = sdiov.name
+        gathered = sdiov.gather_result(bonus)
+        item = sdiov.item
+    elif dice > 88 and dice <= 94:
+        vein = lgmov.name
+        gathered = lgmov.gather_result(bonus)
+        item = lgmov.item
+    elif dice > 94 and dice <= 100:
+        vein = siov.name
+        gathered = siov.gather_result(bonus)
+        item = siov.item
+
+    if combat == True:
+        return f"You have stumbled upon a {enemy} with {enemy_num} enemies"
+    elif hunt == True:
+        return f"You were unlucky enough to encounter {monster}"
+    else:
+        return f"You found {vein}! and gathered {gathered} of {item}!"

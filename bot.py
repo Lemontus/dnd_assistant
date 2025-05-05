@@ -25,26 +25,8 @@ client = discord.Client(intents=discord.Intents.all())
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord')
 
-@bot.hybrid_command(description="Bot's latency")
-async def ping(ctx):
-    await ctx.respond(f'pong! Latency is {bot.latency}')
-
-
-@bot.command(name='99', help='Responds with a random quote from Brooklyn 99')
-async def nine_nine(ctx):
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        (
-            'Cool. cool cool cool cool cool cool cool,'
-            'no doubt no doubt no doubt no doubt.'
-        ),
-    ]
-
-    response = random.choice(brooklyn_99_quotes)
-    await ctx.send(response)
-
-@bot.command(name='roll_dice', help='rolls dice')
+# Dice rolling command
+@bot.hybrid_command(name='dice', help='rolls dice')
 async def roll(ctx, number_of_dice: int, number_of_sides: int):
     dice = [
         str(random.choice(range(1, number_of_sides + 1)))
@@ -52,6 +34,7 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     ]
     await ctx.send(', '.join(dice))
 
+# Herb Gathering Command
 @bot.hybrid_command(name="gather", help="The gathering command accepts !gather + <location> + <bonus>")
 async def herbs(ctx, location: str, bonus: int):
     dice = random.choice(range(1, 101))
@@ -66,6 +49,7 @@ async def herbs(ctx, location: str, bonus: int):
     await ctx.send(f"You rolled {dice}")
     await ctx.send(patch)
 
+# Mineral Gathering Command
 @bot.hybrid_command(name="mine", help="The Mining command accepts !mine + <location> + <bonus>")
 async def metals(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
@@ -79,6 +63,7 @@ async def metals(ctx, location, bonus=0):
     await ctx.send(f"You rolled {dice}")
     await ctx.send(vein)
 
+# Potion Brewing Command
 @bot.hybrid_command(name="brew", help="The Brew command accepts !brew + ")
 async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus=0):
     print(f"{ingredient1}, {ingredient2}, {ingredient3}, {ingredient4}, {ingredient5}")

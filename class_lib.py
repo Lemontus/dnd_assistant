@@ -60,6 +60,7 @@ class Item:
         self.description = description
         self.difficulty = difficulty
         self.id = id
+        self.dic = str.lower(name)
 
 # Class for potions
 class Potion(Item):

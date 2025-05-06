@@ -45,31 +45,37 @@ potion_list = {
     rcreagent.key: rcreagent,
 }
 
-processed_list = {
+grind_list = {
     lleafp.dic: lleafp,
-    dlleaf.dic: dlleaf,
     rherbp.dic: rherbp,
-    drherb.dic: drherb,
     bherbp.dic: bherbp,
-    dbherb.dic: dbherb,
     blherbp.dic: blherbp,
-    dblherb.dic: dblherb,
     gmossp.dic: gmossp,
-    dgmoss.dic: dgmoss,
     ymossp.dic: ymossp,
-    dymoss.dic: dymoss,
     pmossp.dic: pmossp,
-    dpmoss.dic: dpmoss,
     vmossp.dic: vmossp,
-    dvmoss.dic: dvmoss,
     gshroomp.dic: gshroomp,
-    dgshroom.dic: dgshroom,
     rshroomp.dic: rshroomp,
-    drshroom.dic: drshroom,
     bshroomp.dic: bshroomp,
-    dbshroom.dic: dbshroom,
     pshroomp.dic: pshroomp,
+}
+
+dry_list = {
+    dlleaf.dic: dlleaf,
+    drherb.dic: drherb,
+    dbherb.dic: dbherb,
+    dblherb.dic: dblherb,
+    dgmoss.dic: dgmoss,
+    dymoss.dic: dymoss,
+    dpmoss.dic: dpmoss,
+    dvmoss.dic: dvmoss,
+    dgshroom.dic: dgshroom,
+    drshroom.dic: drshroom,
+    dbshroom.dic: dbshroom,
     dpshroom.dic: dpshroom,
+}
+
+smelt_list = {
     gmingot.dic: gmingot,
     ciingot.dic: ciingot,
     iingot.dic: iingot,

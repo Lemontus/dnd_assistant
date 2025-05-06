@@ -74,9 +74,12 @@ async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingre
 
 # Material Processing Command
 @bot.hybrid_command(name="process", help="The Process command is used for processing materials")
-async def processing(ctx, method, ingredient, bonus):
+async def processing(ctx, method, ingredient, bonus:int):
     print(method, ingredient, bonus)
     result = mat_processing(method, ingredient, bonus)
+
+    await ctx.send(f"{result}", ephemeral=True)
+    await ctx.send(f"{ctx.author.mention} is currently processing materials")
 
 # Herb Lookup Command
 @bot.hybrid_command(name="herb")

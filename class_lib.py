@@ -125,7 +125,8 @@ biore = Item("Blue Iron Ore", "", 14, 19)
 nore = Item("Nathrite Ore", "", 18, 20)
 
 # Others
-gbtusk = Item("Ground Boar Tusk", "", 8, 21)
+btusk = Item("Boar Tusk", "", 8, 21)
+
 lrpowder = Item("Light Red Powder", "", 14, 22)
 
 # Processed Materials
@@ -160,6 +161,7 @@ iingot2 = Material("Iron Ingot", "", 10, 50, ciore.name, 16)
 dsingot = Material("Dark Steel Ingot", "", 14, 51, f"{diore.name} and 4 {coal.name}", 4)
 bsingot = Material("Blue Steel Ingot", "", 14, 52, f"{biore.name} and 4 {coal.name}", 4)
 ningot = Material("Nathrite Ingot", "", 18, 53, nore.name, 8)
+gbtusk = Material("Ground Boar Tusk", "", 8, 54, btusk.name)
 
 # Special
 ecpowder = Item("???", "", 20, 999)

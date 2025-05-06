@@ -1,6 +1,8 @@
 
 import dictionaries
+import class_lib
 from dictionaries import *
+from class_lib import *
 
 # Potion Brewing function, used in brew command
 def brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
@@ -68,10 +70,14 @@ def mat_processing(method, ingredient, bonus):
     elif str.lower(method) == "dry":
         if str.lower(ingredient) in dry_list:
             result = dry_list[str.lower(ingredient)].process_material(bonus)
+            return result
         else:
             return f"Can't dry {ingredient}"
     elif str.lower(method) == "smelt":
         if str.lower(ingredient) in smelt_list:
             result = smelt_list[str.lower(ingredient)].process_material(bonus)
+            return result
         else:
             return f"Can't smelt {ingredient}"
+    else:
+        return f"{method} is not a valid method"

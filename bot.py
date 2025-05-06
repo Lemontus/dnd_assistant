@@ -35,7 +35,7 @@ async def roll(ctx, number_of_dice: int, number_of_sides: int):
     await ctx.send(', '.join(dice))
 
 # Herb Gathering Command
-@bot.hybrid_command(name="gather", help="The gathering command accepts !gather + <location> + <bonus>")
+@bot.hybrid_command(name="gather", help="The gathering command accepts, Locations: Plains, Forest")
 async def herbs(ctx, location: str, bonus: int):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
@@ -50,7 +50,7 @@ async def herbs(ctx, location: str, bonus: int):
     await ctx.send(patch)
 
 # Mineral Gathering Command
-@bot.hybrid_command(name="mine", help="The Mining command accepts !mine + <location> + <bonus>")
+@bot.hybrid_command(name="mine", help="The Mining command accepts, Locations: Plains, Forest")
 async def metals(ctx, location, bonus=0):
     dice = random.choice(range(1, 101))
     if location == "Plains" or location == "plains":
@@ -64,7 +64,7 @@ async def metals(ctx, location, bonus=0):
     await ctx.send(vein)
 
 # Potion Brewing Command
-@bot.hybrid_command(name="brew", help="The Brew command accepts !brew + ")
+@bot.hybrid_command(name="brew", help="The Brew command accepts")
 async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus=0):
     print(f"{ingredient1}, {ingredient2}, {ingredient3}, {ingredient4}, {ingredient5}")
     result = brew_func(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, bonus)
@@ -73,7 +73,7 @@ async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingre
     await ctx.send(f"{ctx.author.mention} is currently brewing potions")
 
 # Material Processing Command
-@bot.hybrid_command(name="process", help="The Process command is used for processing materials")
+@bot.hybrid_command(name="process", help="The Process command is used for processing materials, Methods: dry, grind, smelt")
 async def processing(ctx, method, ingredient, bonus:int):
     print(method, ingredient, bonus)
     result = mat_processing(method, ingredient, bonus)
@@ -81,7 +81,7 @@ async def processing(ctx, method, ingredient, bonus:int):
     await ctx.send(f"{result}", ephemeral=True)
     await ctx.send(f"{ctx.author.mention} is currently processing materials")
 
-# Herb Lookup Command
+# Item Lookup Command
 @bot.hybrid_command(name="search")
 async def herbs(ctx, name):
     print(name)

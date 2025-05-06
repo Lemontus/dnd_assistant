@@ -88,6 +88,7 @@ class Material(Item):
         super().__init__(name, description, difficulty, id)
         self.ingr = ingr
         self.num = num
+        self.dic = str.lower(name)
 
     def process_material(self, bonus=0):
         roll = random.choice(range(1, 21))

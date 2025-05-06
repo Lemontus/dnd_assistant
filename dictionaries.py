@@ -2,7 +2,7 @@ import class_lib
 from class_lib import *
 
 
-herb_list = {
+item_list = {
     hgrass.dic: hgrass,
     lleaf.dic: lleaf,
     rherb.dic: rherb,

@@ -82,10 +82,10 @@ async def processing(ctx, method, ingredient, bonus:int):
     await ctx.send(f"{ctx.author.mention} is currently processing materials")
 
 # Herb Lookup Command
-@bot.hybrid_command(name="herb")
+@bot.hybrid_command(name="search")
 async def herbs(ctx, name):
     print(name)
-    result = item_look(name)
+    result = item_search(name)
 
     await ctx.send(f"{result}")
 

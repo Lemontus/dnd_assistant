@@ -8,36 +8,36 @@ from class_lib import *
 def brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
     ingr_id_list = []
 
-    if str.lower(ingr1) in herb_list:
-        ingr1_id = str(herb_list[str.lower(ingr1)].id)
+    if str.lower(ingr1) in item_list:
+        ingr1_id = str(item_list[str.lower(ingr1)].id)
         ingr_id_list.append(ingr1_id)
         print(ingr_id_list)
     else:
         return
     
-    if str.lower(ingr2) in herb_list:
-        ingr2_id = str(herb_list[str.lower(ingr2)].id)
+    if str.lower(ingr2) in item_list:
+        ingr2_id = str(item_list[str.lower(ingr2)].id)
         ingr_id_list.append(ingr2_id)
         print(ingr_id_list)
     else:
         return
     
-    if str.lower(ingr3) in herb_list:
-        ingr3_id = str(herb_list[str.lower(ingr3)].id)
+    if str.lower(ingr3) in item_list:
+        ingr3_id = str(item_list[str.lower(ingr3)].id)
         ingr_id_list.append(ingr3_id)
         print(ingr_id_list)
     else:
         return
     
-    if str.lower(ingr4) in herb_list:
-        ingr4_id = str(herb_list[str.lower(ingr4)].id)
+    if str.lower(ingr4) in item_list:
+        ingr4_id = str(item_list[str.lower(ingr4)].id)
         ingr_id_list.append(ingr4_id)
         print(ingr_id_list)
     else:
         return
     
-    if str.lower(ingr5) in herb_list:
-        ingr5_id = str(herb_list[str.lower(ingr5)].id)
+    if str.lower(ingr5) in item_list:
+        ingr5_id = str(item_list[str.lower(ingr5)].id)
         ingr_id_list.append(ingr5_id)
         print(ingr_id_list)
     else:
@@ -54,9 +54,9 @@ def brew_func(ingr1, ingr2, ingr3, ingr4, ingr5, bonus):
         return "You have brewed an unknown potion"
 
 # Item look up function, used in item look up command
-def item_look(name):
-    if str.lower(name) in herb_list:
-        herb_name = herb_list[str.lower(name)].description
+def item_search(name):
+    if str.lower(name) in item_list:
+        herb_name = item_list[str.lower(name)].description
         return herb_name
 
 # Material Processing function used in the process command

@@ -72,6 +72,20 @@ async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingre
     await ctx.send(f"{result}", ephemeral=True)
     await ctx.send(f"{ctx.author.mention} is currently brewing potions")
 
+# Material Processing Command
+@bot.hybrid_command(name="process", help="The Process command is used for processing materials")
+async def processing(ctx, method, ingredient):
+    print(method, ingredient)
+    result = 
+
+# Herb Lookup Command
+@bot.hybrid_command(name="herb")
+async def herbs(ctx, name):
+    print(name)
+    result = item_look(name)
+
+    await ctx.send(f"{result}")
+
 @bot.event
 async def on_ready():
     await bot.tree.sync()

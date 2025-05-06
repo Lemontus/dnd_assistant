@@ -81,21 +81,37 @@ class Potion(Item):
             return f"You succesfully brewed {self.description}"
         else:
             return "You failed to brew anything"
+        
+# Class for processed materials
+class Material(Item):
+    def __init__(self, name, description, difficulty, id, ingr, num=1):
+        super().__init__(name, description, difficulty, id)
+        self.ingr = ingr
+        self.num = num
+
+    def process_material(self, bonus=0):
+        roll = random.choice(range(1, 21))
+        craft_roll = roll + bonus
+        print(craft_roll)
+        if craft_roll >= self.difficulty:
+            return f"You succesfully processed {self.num} {self.ingr} into a {self.name}"
+        else:
+            return "You failed to process the materials"
 
 # Herbs
-hgrass = Item("Healing Grass", "", 6, 0)
-lleaf = Item("Life Leaf", "", 8, 1)
-rherb = Item("Red Herb", "", 10, 2)
-bherb = Item("Blue Herb", "", 12, 3)
-blherb = Item("Black Herb", "", 20, 4)
-gmoss = Item("Green Moss", "", 10, 5)
-ymoss = Item("Yellow Moss", "", 12, 6)
-pmoss = Item("Purple Moss", "", 15, 7)
-vmoss = Item("Violet Moss", "", 20, 8)
-gshroom = Item("Green Mushroom", "", 12, 9)
-rshroom = Item("Red Mushroom", "", 14, 10)
-bshroom = Item("Blue Mushroom", "", 16, 11)
-pshroom = Item("Purple Mushroom", "", 16, 12)
+hgrass = Item("Healing Grass", "It's grass", 6, 0)
+lleaf = Item("Life Leaf", "It's green", 8, 1)
+rherb = Item("Red Herb", "It's red", 10, 2)
+bherb = Item("Blue Herb", "It's blue", 12, 3)
+blherb = Item("Black Herb", "It's black", 20, 4)
+gmoss = Item("Green Moss", "It's green but moss", 10, 5)
+ymoss = Item("Yellow Moss", "It's yellow but moss", 12, 6)
+pmoss = Item("Purple Moss", "It's purple but moss", 15, 7)
+vmoss = Item("Violet Moss", "It's violet but moss", 20, 8)
+gshroom = Item("Green Mushroom", "It's green but mushroom", 12, 9)
+rshroom = Item("Red Mushroom", "It's red but mushroom", 14, 10)
+bshroom = Item("Blue Mushroom", "It's blue but mushroom", 16, 11)
+pshroom = Item("Purple Mushroom", "It's purple but mushroom", 16, 12)
 
 # Metal
 stone = Item("Stone", "", 1, 13)
@@ -111,8 +127,42 @@ nore = Item("Nathrite Ore", "", 18, 20)
 gbtusk = Item("Ground Boar Tusk", "", 8, 21)
 lrpowder = Item("Light Red Powder", "", 14, 22)
 
+# Processed Materials
+lleafp = Material("Life Leaf Pulp", "It's green", 8, 23, lleaf.name)
+dlleaf = Material("Dried Life Leaf", "It's green", 8, 24, lleaf.name)
+rherbp = Material("Red Herb Pulp", "It's red", 10, 25, rherb.name)
+drherb = Material("Dried Red Herb", "It's red", 10, 26, rherb.name) 
+bherbp = Material("Blue Herb Pulp", "It's blue", 12, 27, bherb.name)
+dbherb = Material("Dried Blue Herb", "It's blue", 12, 28, bherb.name)
+blherbp = Material("Black Herb Pulp", "It's black", 20, 29, blherb.name)
+dblherb = Material("Dried Black Herb", "It's black", 20, 30, blherb.name)
+gmossp = Material("Green Moss Pulp", "It's green but moss", 10, 31, gmoss.name)
+dgmoss = Material("Dried Green Moss", "It's green but moss", 10, 32, gmoss.name)
+ymossp = Material("Yellow Moss Pulp", "It's yellow but moss", 12, 33, ymoss.name)
+dymoss = Material("Dried Yellow Moss", "It's yellow but moss", 12, 34, ymoss.name)
+pmossp = Material("Purple Moss Pulp", "It's purple but moss", 15, 35, pmoss.name)
+dpmoss = Material("Dried Purple Moss", "It's purple but moss", 15, 36, pmoss.name)
+vmossp = Material("Violet Moss Pulp", "It's violet but moss", 20, 37, vmoss.name)
+dvmoss = Material("Dried Violet Moss", "It's violet but moss", 20, 38, vmoss.name)
+gshroomp = Material("Green Mushroom Pulp", "It's green but mushroom", 12, 39, gshroom.name)
+dgshroom = Material("Dried Green Mushroom", "It's green but mushroom", 12, 40, gshroom.name)
+rshroomp = Material("Red Mushroom Pulp", "It's red but mushroom", 14, 41, rshroom.name)
+drshroom = Material("Dried Red Mushroom", "It's red but mushroom", 14, 42, rshroom.name)
+bshroomp = Material("Blue Mushroom Pulp", "It's blue but mushroom", 16, 43, bshroom.name)
+dbshroom = Material("Dried Blue Mushroom", "It's blue but mushroom", 16, 44, bshroom.name)
+pshroomp = Material("Purple Mushroom Pulp", "It's purple but mushroom", 16, 45, pshroom.name)
+dpshroom = Material("Dried Purple Mushroom", "It's purple but mushroom", 16, 46, pshroom.name)
+gmingot = Material("Goblin Metal Ingot", "", 6, 47, gmore.name, 8)
+ciingot = Material("Crude Iron Ingot", "", 6, 48, ciore.name, 8)
+iingot = Material("Iron Ingot", "", 8, 49, iore.name, 8)
+iingot2 = Material("Iron Ingot", "", 10, 50, ciore.name, 16)
+dsingot = Material("Dark Steel Ingot", "", 14, 51, f"{diore.name} and 4 {coal.name}", 4)
+bsingot = Material("Blue Steel Ingot", "", 14, 52, f"{biore.name} and 4 {coal.name}", 4)
+ningot = Material("Nathrite Ingot", "", 18, 53, nore.name, 8)
+
 # Special
-ecpowder = Item("???", "", 20, 99)
+ecpowder = Item("???", "", 20, 999)
+
 
 # Potions
 hwater = Potion("Healing Water", "a bottle of green watery liquid", 8, hgrass.name, hgrass.name, hgrass.name, hgrass.name, hgrass.name, f"{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}{hgrass.id}")

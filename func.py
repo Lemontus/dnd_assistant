@@ -58,7 +58,20 @@ def item_look(name):
         return herb_name
 
 # Material Processing function used in the process command
-def mat_processing(method, ingredient):
+def mat_processing(method, ingredient, bonus):
     if str.lower(method) == "grind":
+        if str.lower(ingredient) in grind_list:
+            result = grind_list[str.lower(ingredient)].process_material(bonus)
+            return result
+        else:
+            return f"Can't grind {ingredient}"
     elif str.lower(method) == "dry":
+        if str.lower(ingredient) in dry_list:
+            result = dry_list[str.lower(ingredient)].process_material(bonus)
+        else:
+            return f"Can't dry {ingredient}"
     elif str.lower(method) == "smelt":
+        if str.lower(ingredient) in smelt_list:
+            result = smelt_list[str.lower(ingredient)].process_material(bonus)
+        else:
+            return f"Can't smelt {ingredient}"

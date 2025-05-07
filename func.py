@@ -58,6 +58,8 @@ def item_search(name):
     if str.lower(name) in item_list:
         herb_name = item_list[str.lower(name)].description
         return herb_name
+    else:
+        return "That's not a valid item name"
 
 # Material Processing function used in the process command
 def mat_processing(method, ingredient, bonus):

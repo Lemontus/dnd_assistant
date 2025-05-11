@@ -15,8 +15,8 @@ class Vein(Location):
 
     def gather_result(self, bonus):
         roll = random.choice(range(1, 21))
-        print(roll)
         gather_roll = roll + bonus
+        print(f"Roll:{roll} Bonus: {bonus}")
         num_gathered = 0
         while gather_roll >= self.difficulty:
             num_gathered += 1
@@ -34,7 +34,7 @@ class Rock(Location):
         
     def rock_result(self, bonus):
         roll = random.choice(range(1, 21))
-        print(roll)
+        print(roll, bonus)
         num_gathered = roll + bonus
         if num_gathered > self.max_items:
             return self.max_items

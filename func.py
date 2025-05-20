@@ -95,6 +95,7 @@ def forecast(location):
         if wind == strongwind and precipitation == snow:
             return f"There is a {blizzard.name} today, {blizzard.description}"
         else:
-            return f"Currently it's {precipitation.name}, {precipitation.description} with {wind.name}, {wind.description}"
+            return f"""Currently it's {precipitation.name}, {precipitation.description}
+There is {wind.name}, {wind.description}"""
     else:
         return "It's not a valid location"

@@ -88,9 +88,13 @@ def mat_processing(method, ingredient, bonus):
 # Weather rolling function used in the Weather command
 def forecast(location):
     if str.lower(location) == "lohsan":
-        wind = random.choice["nowind", "nowind", "nowind", "nowind", "nowind", "lightwind", "lightwind", "lightwind", "strongwind", "strongwind"]
-        precipitation = random.choice["clearsky", "clearsky", "clearsky", "clearsky", "clearsky","clearsky", "snow", "snow", "snow", "snow"]
-        if wind == "strongwind" and precipitation == "snow":
+        lwind = [nowind, nowind, nowind, nowind, nowind, lightwind, lightwind, lightwind, strongwind, strongwind]
+        wind = random.choice(lwind)
+        lpreci = [clearsky, clearsky, clearsky, clearsky, clearsky, clearsky, snow, snow, snow, snow]
+        precipitation = random.choice(lpreci)
+        if wind == strongwind and precipitation == snow:
             return f"There is a {blizzard.name} today, {blizzard.description}"
         else:
             return f"Currently it's {precipitation.name}, {precipitation.description} with {wind.name}, {wind.description}"
+    else:
+        return "It's not a valid location"

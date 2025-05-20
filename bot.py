@@ -109,9 +109,9 @@ async def herbs(ctx, name):
 @bot.hybrid_command(name="weather")
 async def weather(ctx, location):
     print(location)
-    forecast = forecast(location)
+    fcast = forecast(location)
 
-    await ctx.send(f"{forecast}")
+    await ctx.send(f"{fcast}")
 
 @bot.event
 async def on_ready():

@@ -72,6 +72,19 @@ async def potions(ctx, ingredient1, ingredient2, ingredient3, ingredient4, ingre
     await ctx.send(f"{result}", ephemeral=True)
     await ctx.send(f"{ctx.author.mention} is currently brewing potions")
 
+# Blacksmithing Command
+@bot.hybrid_command(name="smith", help="The Smith command is used for blacksmithing")
+async def smithing(ctx, target, bonus):
+    print(target, bonus)
+
+# Blacksmithing Recipe Check Command
+@bot.hybrid_command(name="recipe", help="The Recipe command is used for checking what can be crafted at what lvl, Methods: blacksmithing")
+async def recipe_check(ctx, method, level):
+    print(method, level)
+    if str.lower(method) == "blacksmithing":
+        pass
+
+
 # Material Processing Command
 @bot.hybrid_command(name="process", help="The Process command is used for processing materials, Methods: dry, grind, smelt")
 async def processing(ctx, method, ingredient, how_many:int, bonus:int):

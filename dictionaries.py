@@ -57,6 +57,18 @@ item_list = {
     dsingot.dic: dsingot,
     bsingot.dic: bsingot,
     ningot.dic: ningot,
+    gmplate.dic: gmplate,
+    ciplate.dic: ciplate,
+    iplate.dic: iplate,
+    dsplate.dic: dsplate,
+    bsplate.dic: bsplate,
+    nplate.dic: nplate,
+    gmcsheet.dic: gmcsheet,
+    cicsheet.dic: cicsheet,
+    icsheet.dic: icsheet,
+    dscsheet.dic: dscsheet,
+    bscsheet.dic: bscsheet,
+    ncsheet.dic: ncsheet,
 } 
 
 potion_list = {

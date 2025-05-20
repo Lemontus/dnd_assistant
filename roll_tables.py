@@ -261,3 +261,86 @@ def forest_metal(dice, bonus):
         return f"You were unlucky enough to encounter {monster}"
     else:
         return f"You found {vein}! and gathered {gathered} of {item}!"
+    
+# Roll function for random kingdom events
+def k_events(dice):
+    if dice <= 3:
+        return "Archeological Find"
+    elif dice > 3 and dice <= 5:
+        return "Assassination Attempt"
+    elif dice > 5 and dice <= 7:
+        return "Bandit Activity"
+    elif dice > 7 and dice <= 10:
+        return "Placeholder"
+    elif dice > 10 and dice <= 14:
+        return "Building Demand"
+    elif dice > 14 and dice <= 17:
+        return "Production Failure"
+    elif dice > 17 and dice <= 19:
+        return "Cult Activity"
+    elif dice > 19 and dice <= 22:
+        return "Diplomatic Envoy"
+    elif dice > 22 and dice <= 25:
+        return "Placeholder"
+    elif dice > 25 and dice <= 27:
+        return "Placeholder"
+    elif dice > 27 and dice <= 28:
+        return "Economic Surge"
+    elif dice > 28 and dice <= 31:
+        return "Expansion Demand"
+    elif dice > 31 and dice <= 34:
+        return "Festive Invitation"
+    elif dice > 34 and dice <= 37:
+        return "Feud"
+    elif dice > 37 and dice <= 39:
+        return "Food Shortage"
+    elif dice > 39 and dice <= 42:
+        return "Food Surplus"
+    elif dice > 42 and dice <= 44:
+        return "Good Weather"
+    elif dice > 44 and dice <= 46:
+        return "Inquisition"
+    elif dice > 46 and dice <= 49:
+        return "Placeholder"
+    elif dice > 49 and dice <= 51:
+        return "Placeholder"
+    elif dice > 51 and dice <= 54:
+        return "Local Disaster"
+    elif dice > 54 and dice <= 57:
+        return "Monster Activity"
+    elif dice == 58:
+        return "Natural Disaster"
+    elif dice > 58 and dice <= 61:
+        return "Placeholder"
+    elif dice > 61 and dice <= 64:
+        return "New Subjects"
+    elif dice > 64 and dice <= 67:
+        return "Guild Demands War funds"
+    elif dice > 67 and dice <= 70:
+        return "Outstanding Success in Production"
+    elif dice > 70 and dice <= 72:
+        return "Pilgrimage"
+    elif dice > 72 and dice <= 74:
+        return "Plague"
+    elif dice > 74 and dice <= 78:
+        return "Political Calm"
+    elif dice > 78 and dice <= 81:
+        return "Public Scandal"
+    elif dice == 82:
+        return "Remarkable Treasure"
+    elif dice == 83:
+        return "Cultist Sacrifices"
+    elif dice > 83 and dice <= 85:
+        return "Sensational Crime"
+    elif dice > 85 and dice <= 90:
+        return "Squatters"
+    elif dice > 90 and dice <= 92:
+        return "Undead Uprising"
+    elif dice > 92 and dice <= 95:
+        return "Unexpected Find"
+    elif dice > 95 and dice <= 97:
+        return "Vandals"
+    elif dice > 97 and dice <= 99:
+        return "Visiting Celebrity"
+    elif dice == 100:
+        return "Wealthy Immigrant"

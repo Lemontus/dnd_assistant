@@ -99,6 +99,21 @@ class Material(Item):
         else:
             return "You failed to process the materials"
 
+# Class for Weather Locations
+class Weather(Location):
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+        
+# Weather
+clearsky = Weather("Clear Sky", "Clear blue skies with virtually no clouds")
+snow = Weather("Snowfall", "Heavy snowfall obscures everything around you, additionally the packed snow makes it harder to walk (-10ft without snow boots)")
+nowind = Weather("No Wind", "The area is pretty much windless")
+lightwind = Weather("Light Wind", "The area is slightly windy")
+strongwind = Weather("Strong Wind", "The wind in the area is strong making it particularly difficult to use ranged weapons(Disadvantage on Ranged Weapon attack rolls), it also extinguishes open flames, disperses fog and makes flying by nonmagical means nearly impossible (A flying creature must land at the end of its turn or fall)")
+blizzard = Weather("Blizzard", "The area is currently hostile to all life due to heavy snowfall and extremely strong winds, immediately seek shelter (Movement speed is halved, disadvantage on ranged weapon attack rolls, Wisdom(Perception) checks that rely on both hearing and sight)")
+
+
 # Herbs
 hgrass = Item("Healing Grass", "It's grass", 6, 0)
 lleaf = Item("Life Leaf", "It's green", 8, 1)

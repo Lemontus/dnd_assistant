@@ -105,6 +105,14 @@ async def herbs(ctx, name):
 
     await ctx.send(f"{result}")
 
+# Random Weather Command
+@bot.hybrid_command(name="weather")
+async def weather(ctx, location):
+    print(location)
+    forecast = forecast(location)
+
+    await ctx.send(f"{forecast}")
+
 @bot.event
 async def on_ready():
     await bot.tree.sync()

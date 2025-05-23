@@ -113,6 +113,16 @@ async def weather(ctx, location):
 
     await ctx.send(f"{fcast}")
 
+# General Kingdom Management Command
+@bot.hybrid_command(name="kingdom")
+async def kingdom(ctx, command):
+    print(command)
+    if command == "event":
+        dice = random.choice(range(1, 101))
+        event = k_events(dice)
+
+        await ctx.send(f"{event}")
+
 @bot.event
 async def on_ready():
     await bot.tree.sync()

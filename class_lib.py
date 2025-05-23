@@ -241,5 +241,10 @@ sdiov = Vein("Small Dark Iron Ore Vein", diore.name, 4, diore.difficulty)
 # Monster groups
 gsparty = Combatant("Goblin Hunting Party", 4, 2)
 bparty = Combatant("Bandit Party", 4, 0)
+iparty = Combatant("Inquisition Party", 4, 1)
+bcamp = Combatant("Bandit Camp", 12, 16)
+ccamp = Combatant("Cultist Camp", 8, 4)
+scamp = Combatant("Squatters Camp", 8, 10)
+ucamp = Combatant("Undead Uprising", 20, 6)
 
         

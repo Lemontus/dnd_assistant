@@ -269,6 +269,8 @@ def k_events(dice):
     elif dice > 3 and dice <= 5:
         return "Assassination Attempt"
     elif dice > 5 and dice <= 7:
+        camp_size = bcamp.enemy_result()
+        print(camp_size)
         return "Bandit Activity"
     elif dice > 7 and dice <= 10:
         return "Placeholder"
@@ -277,6 +279,8 @@ def k_events(dice):
     elif dice > 14 and dice <= 17:
         return "Production Failure"
     elif dice > 17 and dice <= 19:
+        camp_size = ccamp.enemy_result()
+        print(camp_size)
         return "Cult Activity"
     elif dice > 19 and dice <= 22:
         return "Diplomatic Envoy"
@@ -299,14 +303,22 @@ def k_events(dice):
     elif dice > 42 and dice <= 44:
         return "Good Weather"
     elif dice > 44 and dice <= 46:
-        return "Inquisition"
+        group_size = iparty.enemy_result()
+        factions = ["The Guild", "Uscal", "Creibia", "Venizi"]
+        faction = random.choice(factions)
+        print(group_size)
+        return (f"Inquisitors from {faction} are visiting")
     elif dice > 46 and dice <= 49:
-        return "Placeholder"
+        number = random.choice(range(20, 80))
+        return (f"{number} poor immigrants have arrived at your castle")
     elif dice > 49 and dice <= 51:
-        return "Placeholder"
+        number = random.choice(range(10, 40))
+        return (f"{number} immigrants have arrived at your castle")
     elif dice > 51 and dice <= 54:
         return "Local Disaster"
     elif dice > 54 and dice <= 57:
+        monster = forest_hunt()
+        print(monster)
         return "Monster Activity"
     elif dice == 58:
         return "Natural Disaster"
@@ -315,13 +327,17 @@ def k_events(dice):
     elif dice > 61 and dice <= 64:
         return "New Subjects"
     elif dice > 64 and dice <= 67:
-        return "Guild Demands War funds"
+        pdemand = [200, 200, 500, 500, 500, 1000, 1000, 1250, 1500, 2500]
+        demand = random.choice(pdemand)
+        return (f"Guild Demands War funds: {demand} gold coins")
     elif dice > 67 and dice <= 70:
         return "Outstanding Success in Production"
     elif dice > 70 and dice <= 72:
         return "Pilgrimage"
     elif dice > 72 and dice <= 74:
-        return "Plague"
+        percentage = [1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5, 5, 10]
+        down = random.choice(percentage)
+        return (f"Plague: {down}% of the population has come down with plague")
     elif dice > 74 and dice <= 78:
         return "Political Calm"
     elif dice > 78 and dice <= 81:
@@ -333,8 +349,12 @@ def k_events(dice):
     elif dice > 83 and dice <= 85:
         return "Sensational Crime"
     elif dice > 85 and dice <= 90:
-        return "Squatters"
+        camp_size = scamp.enemy_result()
+        print(camp_size)
+        return "Squatters have set up camp somewhere in the region"
     elif dice > 90 and dice <= 92:
+        camp_size = ucamp.enemy_result()
+        print(camp_size)
         return "Undead Uprising"
     elif dice > 92 and dice <= 95:
         return "Unexpected Find"

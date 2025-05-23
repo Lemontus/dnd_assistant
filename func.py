@@ -99,3 +99,20 @@ def forecast(location):
 There is {wind.name}, {wind.description}"""
     else:
         return "It's not a valid location"
+    
+# Tax Collection function3
+def tax_gather(poor, average, rich):
+    tax = 0
+    for x in range(poor):
+        poor_money = random.choice(range(1, 7))
+        print(poor_money)
+        tax += poor_money
+    for x in range(average):
+        average_money = random.choice(range(3, 13))
+        print(average_money)
+        tax += average_money
+    for x in range(rich):
+        rich_money = random.choice(range(8, 26))
+        print(rich_money)
+        tax += rich_money
+    return tax

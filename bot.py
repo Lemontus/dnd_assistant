@@ -122,6 +122,13 @@ async def kingdom(ctx, command):
         event = k_events(dice)
 
         await ctx.send(f"{event}")
+    elif command == "tax":
+        poor = 0
+        average = 0
+        rich = 0
+        taxes = tax_gather(poor, average, rich)
+
+        await ctx.send(f"You have gathered {taxes} gold coins as tax")
 
 @bot.event
 async def on_ready():

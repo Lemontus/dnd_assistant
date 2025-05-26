@@ -268,3 +268,19 @@ Concealed creature or object
 Tracks or food""", inline=True)
 
     return embed
+
+# Info Function
+def info1_embed(category):
+    embed = discord.Embed(title="Selling Treasure", url="https://homebrewery.naturalcrit.com/share/mluFPbOD3UXD", description="Opportunities abound to find treasure, equipment, weapons, armor, and more in the dungeons you explore. Normally, you can sell your treasures and trinkets when you return to a town or other settlement, provided that you can find buyers and merchants interested in your loot.")
+    if category == "Military":
+        embed.add_field(name="Arms, Armor, and Other Equipment", value="As a general rule, undamaged weapons, armor, and other equipment fetch half their cost when sold in a market. Weapons and armor used by monsters are rarely in good enough condition to sell for much. Locations such as military outposts, and war camps will usually buy such equipment for a higher price than merchants at a market.")
+    elif category == "Magic Items":
+        embed.add_field(name="Magic Items", value="Selling magic items is problematic. Finding someone to buy a potion or a scroll isn’t too hard, but other items are out of the realm of most but the wealthiest nobles. Likewise, aside from a few common magic items, you won’t normally come across magic items or spells to purchase.")
+    elif category == "Luxuries":
+        embed.add_field(name="Gems, Jewelry and Art Objects", value="These items retain their full value in the marketplace, and you can either trade them in for coin or use them as currency for other transactions. For exceptionally valuable treasures, the DM might require you to find a buyer in a large town or larger community first.")
+    elif category == "Trade Goods":
+        embed.add_field(name="Trade Goods and Other", value="On the borderlands, many people conduct transactions through barter. Like gems and art objects, trade goods—bars of iron, bags of salt, livestock, and so on—retain their full value in the market and can be used as currency.")
+    else:
+        return "That is not a valid category"
+
+    return embed    

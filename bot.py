@@ -164,7 +164,21 @@ async def rules_autocomplete(interaction: discord.Interaction, current: str) -> 
     options = ["Cover", "Shields", "Basics", "Spells", "Suffocating", "Gnomes", "High Ground", "Magical Effects", "Jump", "Wounded", "Cold", "Opportunity Attacks", "Study", "Grapple", "Hide", "Invisible", "Knocking Out", "Search"]
     return [app_commands.Choice(name=option, value=option) for option in options if option.lower().startswith(current.lower())][:25]
 
+# Info Command
+@bot.hybrid_group(name="info")
+async def info(ctx: commands.Context) -> None:
+    await ctx.send("Information Command")
 
+@bot.hybrid_command(name="selling_treasure")
+async def info_1(ctx, category):
+    embed = info1_embed(category)
+
+    await ctx.send(embed = embed)
+
+#@info_1.autocomplete("category")
+#async def info_1_autocomplete(interaction: discord.Interaction, current: str) -> list[app_commands.Choice[str]]:
+#    options = ["Military", "Magic Items", "Luxuries", "Trade Goods"]
+#    return [app_commands.Choice(name=option, value=option) for option in options if option.lower().startswith(current.lower())][:25]
 
 
 @bot.event

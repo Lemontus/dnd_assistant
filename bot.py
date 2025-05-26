@@ -154,23 +154,17 @@ async def kingdom_autocomplete(interaction: discord.Interaction, current: str) -
 # Rules Command
 @bot.hybrid_command(name="rules")
 async def rules(ctx, rule):
-    if str.lower(rule) == "cover":
-        embed = discord.Embed(title="Cover", url="https://www.postgresql.org/", description="""Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.
+    embed = rules_embed(rule)
+    embed.set_footer(text="Don't be a dingus and read carefully.")
 
-There are three degrees of cover. If a target is behind multiple sources of cover, only the most protective degree of cover applies; the degrees aren’t added together. For example, if a target is behind a creature that gives half cover and a tree trunk that gives three-quarters cover, the target has three-quarters cover.
-
-A target with half cover has a +2 bonus to AC and Dexterity saving throws. A target has half cover if an obstacle blocks at least half of its body. The obstacle might be a low wall, a large piece of furniture, a narrow tree trunk, or a creature, whether that creature is an enemy or a friend.
-
-A target with three-quarters cover has a +5 bonus to AC and Dexterity saving throws. A target has three-quarters cover if about three-quarters of it is covered by an obstacle. The obstacle might be a portcullis, an arrow slit, or a thick tree trunk.
-
-A target with total cover can’t be targeted directly by an attack or a spell, although some spells can reach such a target by including it in an area of effect.""", color=0xFF5733)
-        embed.set_footer(text="Don't be a dingus and read carefully.")
-        await ctx.send(embed = embed)
+    await ctx.send(embed = embed)
 
 @rules.autocomplete("rule")
 async def rules_autocomplete(interaction: discord.Interaction, current: str) -> list[app_commands.Choice[str]]:
-    options = ["cover"]
+    options = ["Cover", "Shields", "Basics", "Spells", "Suffocating", "Gnomes", "High Ground", "Magical Effects", "Jump", "Wounded", "Cold", "Opportunity Attacks", "Study", "Grapple", "Hide", "Invisible", "Knocking Out", "Search"]
     return [app_commands.Choice(name=option, value=option) for option in options if option.lower().startswith(current.lower())][:25]
+
+
 
 
 @bot.event
@@ -188,7 +182,9 @@ async def on_ready():
 #         await guild.create_text_channel(channel_name)
 
 # @bot.event
-# async def on_command_error(ctx, error):
+# async def on_command_error(ctx, errfrom discord import app_commands
+# from discord.ext import commands 
+# from typing import Listor):
 #     if isinstance(error, commands.errors.CheckFailure):
 #         await ctx.send('You do not have the correct role for this')
 

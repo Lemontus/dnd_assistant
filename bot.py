@@ -1,6 +1,6 @@
 import os
 import random
-
+import sqlite3
 import time
 import discord
 import roll_tables
@@ -180,6 +180,19 @@ async def info_1(ctx, category):
 #    options = ["Military", "Magic Items", "Luxuries", "Trade Goods"]
 #    return [app_commands.Choice(name=option, value=option) for option in options if option.lower().startswith(current.lower())][:25]
 
+@bot.hybrid_command(name="database")
+async def database(ctx):
+
+    sqlite_connection = sqlite3.connect('The Guild')
+    cursor = sqlite_connection.cursor()
+    print('DB Init')
+
+    #cursor.execute("INSERT INTO Material VALUES ('Life Leaf Pulp', 'It is green', 8, 23, 'Life Leaf'), ('Dried Life Leaf', 'It is green', 8, 24, 'Life Leaf')")
+    #sqlite_connection.commit()
+
+    res = cursor.execute("select Name from Material")
+    result = res.fetchall()
+    await ctx.send(result)
 
 @bot.event
 async def on_ready():
